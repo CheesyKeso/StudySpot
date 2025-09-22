@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "name": "The Study Nook",
+    "location": "Quezon City",
+    "price": 300,
+    "main_image": "/assets/space-1.jpg",
+    "images": ["/assets/space1_a.jpg", "/assets/space1_b.jpg"],
+    "description": "A quiet and cozy space perfect for deep focus sessions. Equipped with soundproof pods and an extensive library for a productive day.",
+    "amenities": [
+      "High-speed Wi-Fi",
+      "Free Coffee & Tea",
+      "Power Outlets at every seat",
+      "Air-conditioned",
+      "Printing Services"
+    ],
+    "hours": "9:00 AM - 9:00 PM",
+    "time_slots": ["9am - 1pm", "1pm - 5pm", "5pm - 9pm"]
+  },
+  {
+    "id": 2,
+    "name": "WorkHaven Makati",
+    "location": "Makati City",
+    "price": 500,
+    "main_image": "/assets/space-2.jpg",
+    "images": ["/assets/space2_a.jpg", "/assets/space2_b.jpg"],
+    "description": "A professional co-working environment in the heart of the business district. Ideal for meetings, collaborations, and networking.",
+    "amenities": [
+      "Fiber Internet",
+      "Meeting Rooms",
+      "Gourmet Pantry",
+      "24/7 Access",
+      "Ergonomic Chairs"
+    ],
+    "hours": "Open 24/7",
+    "time_slots": ["Full Day Pass", "Night Owl Pass (9pm-6am)"]
+  },
+  {
+    "id": 3,
+    "name": "Cebu Creative Hub",
+    "location": "Cebu City",
+    "price": 250,
+    "main_image": "/assets/space-3.jpg",
+    "images": [],
+    "description": "A vibrant and artistic space designed to foster creativity and collaboration among Cebu's digital nomads and artists.",
+    "amenities": [
+      "Community Events",
+      "Art Supplies",
+      "Fast Wi-Fi",
+      "Pet-friendly",
+      "Outdoor Garden"
+    ],
+    "hours": "10:00 AM - 7:00 PM",
+    "time_slots": ["Morning Session (10am-2pm)", "Afternoon Session (2pm-6pm)"]
+  },
+  {
+    "id": 4,
+    "name": "Manila Mindspace",
+    "location": "Manila City",
+    "price": 350,
+    "main_image": "/assets/space-4.jpg",
+    "images": ["/assets/space4_a.jpg", "/assets/space4_b.jpg"],
+    "description": "A modern study lounge with private booths and collaborative tables, perfect for students and professionals alike.",
+    "amenities": [
+      "Private Booths",
+      "Group Tables",
+      "Unlimited Snacks",
+      "Fast Wi-Fi",
+      "Printing & Scanning"
+    ],
+    "hours": "8:00 AM - 10:00 PM",
+    "time_slots": ["Morning (8am-12pm)", "Afternoon (12pm-4pm)", "Evening (4pm-10pm)"]
+  },
+  {
+    "id": 5,
+    "name": "Davao Study Loft",
+    "location": "Davao City",
+    "price": 200,
+    "main_image": "/assets/space-5.jpg",
+    "images": ["/assets/space5_a.jpg"],
+    "description": "A budget-friendly loft with a relaxed atmosphere, ideal for group studies and brainstorming sessions.",
+    "amenities": [
+      "Whiteboards",
+      "Group Study Rooms",
+      "Free Water",
+      "Wi-Fi",
+      "Parking"
+    ],
+    "hours": "9:00 AM - 8:00 PM",
+    "time_slots": ["9am-1pm", "1pm-5pm"]
+  },
+  {
+    "id": 6,
+    "name": "Tagaytay Think Tank",
+    "location": "Tagaytay",
+    "price": 400,
+    "main_image": "/assets/space-6.jpg",
+    "images": ["/assets/space6_a.jpg", "/assets/space6_b.jpg"],
+    "description": "A scenic study spot with a view of Taal, offering a peaceful environment for focused work.",
+    "amenities": [
+      "Scenic View",
+      "Outdoor Seating",
+      "Complimentary Drinks",
+      "Wi-Fi",
+      "Charging Stations"
+    ],
+    "hours": "7:00 AM - 7:00 PM",
+    "time_slots": ["Morning (7am-12pm)", "Afternoon (12pm-7pm)"]
+  },
+  {
+    "id": 7,
+    "name": "Baguio Brainery",
+    "location": "Baguio City",
+    "price": 280,
+    "main_image": "/assets/space-7.jpg",
+    "images": ["/assets/space7_a.jpg"],
+    "description": "A cozy, wood-themed study space with a fireplace, perfect for chilly Baguio days.",
+    "amenities": [
+      "Fireplace",
+      "Hot Chocolate",
+      "Wi-Fi",
+      "Study Cubicles",
+      "Board Games"
+    ],
+    "hours": "8:00 AM - 9:00 PM",
+    "time_slots": ["8am-1pm", "1pm-6pm", "6pm-9pm"]
+  },
+  {
+    "id": 8,
+    "name": "Iloilo Innovation Hub",
+    "location": "Iloilo City",
+    "price": 320,
+    "main_image": "/assets/space-8.jpg",
+    "images": ["/assets/space8_a.jpg", "/assets/space8_b.jpg"],
+    "description": "A tech-forward space with digital resources and a makerspace for creative projects.",
+    "amenities": [
+      "3D Printing",
+      "Tech Library",
+      "Wi-Fi",
+      "Coffee Bar",
+      "Workshops"
+    ],
+    "hours": "10:00 AM - 8:00 PM",
+    "time_slots": ["10am-2pm", "2pm-6pm", "6pm-8pm"]
+  },
+  {
+    "id": 9,
+    "name": "Pasig Productivity Place",
+    "location": "Pasig City",
+    "price": 270,
+    "main_image": "/assets/space-9.jpg",
+    "images": ["/assets/space9_a.jpg"],
+    "description": "A minimalist study area with lots of natural light and quiet corners.",
+    "amenities": [
+      "Natural Lighting",
+      "Quiet Zones",
+      "Wi-Fi",
+      "Snack Bar",
+      "Lockers"
+    ],
+    "hours": "8:00 AM - 8:00 PM",
+    "time_slots": ["8am-12pm", "12pm-4pm", "4pm-8pm"]
+  },
+  {
+    "id": 10,
+    "name": "Ortigas Open Desk",
+    "location": "Ortigas Center",
+    "price": 350,
+    "main_image": "/assets/space-10.jpg",
+    "images": ["/assets/space10_a.jpg", "/assets/space10_b.jpg"],
+    "description": "An open-plan co-working space with flexible seating and fast internet.",
+    "amenities": [
+      "Flexible Seating",
+      "High-Speed Wi-Fi",
+      "Coffee & Tea",
+      "Phone Booths",
+      "Event Space"
+    ],
+    "hours": "7:00 AM - 11:00 PM",
+    "time_slots": ["7am-1pm", "1pm-7pm", "7pm-11pm"]
+  }
+]
