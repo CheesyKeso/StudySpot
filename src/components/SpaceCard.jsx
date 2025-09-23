@@ -14,7 +14,20 @@ const SpaceCard = ({ space, onViewDetails }) => {
   };
 
   return (
-    <article className="card" aria-labelledby={`card-${space.id}-title`}>
+    // make the full card clickable and keyboard-accessible
+    <article
+      className="card clickable"
+      aria-labelledby={`card-${space.id}-title`}
+      role="button"
+      tabIndex={0}
+      onClick={handleView}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          handleView();
+        }
+      }}
+    >
       <img className="card-image" src={space.main_image} alt={space.name} />
       <div className="card-body">
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
@@ -22,15 +35,15 @@ const SpaceCard = ({ space, onViewDetails }) => {
           <div style={{ marginLeft: 'auto', fontWeight: 700 }} className="card-price">₱{space.price}</div>
         </div>
         <p className="card-sub">{space.location}</p>
-        <p style={{ margin: 4, color: '#4b5563', fontSize: 13 }}>{space.description?.slice(0, 110)}{space.description && space.description.length > 110 ? '…' : ''}</p>
-
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <button className="link-button" onClick={handleView}>View Details</button>
-          <button className="primary-btn" onClick={() => alert('Booking flow not implemented')}>Book</button>
-        </div>
+        <p style={{ margin: 4, color: '#4b5563', fontSize: 13 }}>
+          {space.description?.slice(0, 110)}{space.description && space.description.length > 110 ? '…' : ''}
+        </p>
       </div>
     </article>
   );
 };
 
 export default SpaceCard;
+
+
+

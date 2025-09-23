@@ -1,0 +1,28 @@
+.topbar {
+  background: #ffffff;
+  border-bottom: 1px solid #eef2ff;
+  padding: 8px 12px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.topbar-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 8px;
+}
+.brand {
+  font-weight: 800;
+  color: #0f172a;
+  font-size: 1.05rem;
+}
+.topbar-actions {
+  margin-left: auto;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.signed-in { color: #374151; }
