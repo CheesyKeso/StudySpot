@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import '../css/SearchBar.css';
 import SpaceCard from './SpaceCard';
-import SpaceDetails from './SpaceDetails';
 
 const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [spaces, setSpaces] = useState([]);
   const [filteredSpaces, setFilteredSpaces] = useState([]);
-  const [selectedSpace, setSelectedSpace] = useState(null);
 
   useEffect(() => {
     const fetchSpaces = async () => {
@@ -36,9 +34,6 @@ const SearchBar = () => {
     setSearchQuery(event.target.value);
   };
 
-  const handleViewDetails = (space) => setSelectedSpace(space);
-  const closeDetails = () => setSelectedSpace(null);
-
   return (
     <div className="page-container">
       <div className="page-header">
@@ -63,15 +58,12 @@ const SearchBar = () => {
           <SpaceCard
             key={space.id}
             space={space}
-            onViewDetails={handleViewDetails}
           />
         ))}
       </div>
-      {selectedSpace && (
-        <SpaceDetails space={selectedSpace} onClose={closeDetails} />
-      )}
     </div>
   );
 };
 
 export default SearchBar;
+      
