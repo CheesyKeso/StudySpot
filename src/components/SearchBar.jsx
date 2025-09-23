@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import '../css/SearchBar.css';
-import SpaceDetails from './SpaceDetails'; // Import SpaceDetails
+import SpaceCard from './SpaceCard';
+import SpaceDetails from './SpaceDetails';
 
 const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [spaces, setSpaces] = useState([]);
   const [filteredSpaces, setFilteredSpaces] = useState([]);
+  const [selectedSpace, setSelectedSpace] = useState(null);
 
   useEffect(() => {
     const fetchSpaces = async () => {
@@ -34,8 +36,16 @@ const SearchBar = () => {
     setSearchQuery(event.target.value);
   };
 
+  const handleViewDetails = (space) => setSelectedSpace(space);
+  const closeDetails = () => setSelectedSpace(null);
+
   return (
-    <div>
+    <div className="page-container">
+      <div className="page-header">
+        <h1>Find your perfect study spot</h1>
+        <p>Search, preview and book comfortable spaces near you.</p>
+      </div>
+
       <form className="search-bar" onSubmit={(e) => e.preventDefault()}>
         <input
           type="text"
@@ -43,14 +53,23 @@ const SearchBar = () => {
           placeholder="Search for a study spot..."
           className="search-input"
           value={searchQuery}
-          onChange={handleSearch} // Trigger filtering on input change
+          onChange={handleSearch}
+          aria-label="Search study spots"
         />
       </form>
-      <div>
+
+      <div className="results-grid" aria-live="polite">
         {filteredSpaces.map((space) => (
-          <SpaceDetails key={space.id} space={space} /> // Use SpaceDetails
+          <SpaceCard
+            key={space.id}
+            space={space}
+            onViewDetails={handleViewDetails}
+          />
         ))}
       </div>
+      {selectedSpace && (
+        <SpaceDetails space={selectedSpace} onClose={closeDetails} />
+      )}
     </div>
   );
 };

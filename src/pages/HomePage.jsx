@@ -3,8 +3,8 @@ import SearchBar from '../components/SearchBar';
 
 const HomePage = () => {
   return (
-    <div>
-      <h1>Welcome to StudySpot</h1>
+    <div className="page-container">
+      <h1 style={{ display: 'none' }}>StudySpot Home</h1>
       <SearchBar />
     </div>
   );
