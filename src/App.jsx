@@ -1,8 +1,9 @@
 import React, { useState, createContext } from 'react';
 import { usePWA } from './hooks/usePWA';
 import HomePage from './pages/HomePage';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import SpaceDetails from './pages/SpaceDetails';
+import BookingsPage from './pages/BookingsPage';
 import './css/topbar.css'; // added: topbar styles
 
 export const AuthContext = createContext({
@@ -36,26 +37,28 @@ export default function App() {
 
   return (
     <AuthContext.Provider value={{ user, signInDemo, signOut }}>
-      <div className="topbar">
-        <div className="topbar-inner">
-          <div className="brand" role="banner">StudySpot</div>
-          <div className="topbar-actions">
-            {user ? (
-              <>
-                <span className="signed-in">Signed in as <strong>{user.name}</strong></span>
-                <button className="link-button" onClick={signOut}>Sign out</button>
-              </>
-            ) : (
-              <button className="primary-btn" onClick={signInDemo}>Sign in</button>
-            )}
+      <BrowserRouter>
+        <div className="topbar">
+          <div className="topbar-inner">
+            <div className="brand" role="banner">StudySpot</div>
+            <div className="topbar-actions">
+              {user ? (
+                <>
+                  <span className="signed-in">Signed in as <strong>{user.name}</strong></span>
+                  <Link to="/bookings" className="link-button" style={{ marginLeft: 8 }}>Booked</Link>
+                  <button className="link-button" onClick={signOut} style={{ marginLeft: 8 }}>Sign out</button>
+                </>
+              ) : (
+                <button className="primary-btn" onClick={signInDemo}>Sign in</button>
+              )}
+            </div>
           </div>
         </div>
-      </div>
 
-      <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/spaces/:id" element={<SpaceDetails />} />
+          <Route path="/bookings" element={<BookingsPage />} />
         </Routes>
       </BrowserRouter>
     </AuthContext.Provider>
