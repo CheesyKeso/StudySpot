@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import '../css/confirm-modal.css';
+import '../css/ConfirmModal.css';
 
 const ConfirmModal = ({ open, booking, onConfirm, onCancel }) => {
   const confirmRef = useRef(null);

@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../App.jsx';
-import '../css/booking.css';
+import { AuthContext } from '../context/AuthContext'; // updated import
+import '../css/BookingPage.css';
 import ConfirmModal from '../components/ConfirmModal'; // added import
 
 const BookingsPage = () => {
@@ -103,4 +103,4 @@ const BookingsPage = () => {
 };
 
 export default BookingsPage;
-          
+

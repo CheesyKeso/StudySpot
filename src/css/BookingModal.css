@@ -1,0 +1,67 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 60;
+}
+
+.modal-dialog {
+  background: #fff;
+  border-radius: 8px;
+  max-width: 520px;
+  width: 100%;
+  padding: 18px;
+  box-shadow: 0 8px 24px rgba(15,23,42,0.12);
+}
+
+.booking-modal h3 {
+  margin: 0 0 12px 0;
+  font-size: 18px;
+}
+
+.booking-modal .form-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.booking-modal .form-row label {
+  font-size: 13px;
+  margin-bottom: 6px;
+  color: #374151;
+}
+
+.booking-modal .form-row input,
+.booking-modal .form-row select {
+  padding: 8px 10px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 14px;
+  background: #fff;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+/* reuse existing utility classes (.primary-btn, .link-button) defined elsewhere */
+.form-success {
+  color: #065f46;
+  background: #ecfdf5;
+  padding: 8px;
+  border-radius: 6px;
+  margin-top: 8px;
+}
+.form-error {
+  color: #7f1d1d;
+  background: #fff1f2;
+  padding: 8px;
+  border-radius: 6px;
+  margin-top: 8px;
+}

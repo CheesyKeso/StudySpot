@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import '../css/SpaceCard.css'; // reuse some styles, adjust as needed
-import '../css/booking.css'; // added: booking form styles
-import { AuthContext } from '../App.jsx';
+import '../css/BookingPage.css'; // added: booking form styles
+import { AuthContext } from '../context/AuthContext'; // updated import
+import BookingModal from '../components/BookingModal'; // new modal component
 
 const SpaceDetails = () => {
   const { id } = useParams();
@@ -16,6 +17,9 @@ const SpaceDetails = () => {
   const [selectedSlot, setSelectedSlot] = useState('');
   const [attendees, setAttendees] = useState(1);
   const [bookingStatus, setBookingStatus] = useState(null); // { success: bool, message: string }
+
+  // NEW: modal open state
+  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     const fetchSpace = async () => {
@@ -107,50 +111,42 @@ const SpaceDetails = () => {
             {/* keep simple CTA as well */}
           </div>
 
-          {/* --- Booking form (visible if user signed in) --- */}
+          {/* --- Booking form moved to modal --- */}
           <section style={{ marginTop: 18 }}>
             {!user ? (
               <div className="booking-form">
                 <p style={{ margin: 0 }}>Sign in via the top-right "Sign in" button to make a booking.</p>
               </div>
             ) : (
-              <form className="booking-form" onSubmit={handleBook}>
-                <h3>Book a slot</h3>
-
-                <div className="form-row">
-                  <label>Choose date</label>
-                  <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
+              <>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <button className="primary-btn" onClick={() => setModalOpen(true)}>Book a slot</button>
+                  {bookingStatus && (
+                    <div className={bookingStatus.success ? 'form-success' : 'form-error'} style={{ marginLeft: 8 }}>
+                      {bookingStatus.message}
+                    </div>
+                  )}
                 </div>
-
-                <div className="form-row">
-                  <label>Time slot</label>
-                  <select value={selectedSlot} onChange={(e) => setSelectedSlot(e.target.value)}>
-                    <option value="">-- select a slot --</option>
-                    {space.time_slots?.map((t, i) => <option key={i} value={t}>{t}</option>)}
-                  </select>
-                </div>
-
-                <div className="form-row">
-                  <label>Attendees</label>
-                  <input type="number" min="1" value={attendees} onChange={(e) => setAttendees(e.target.value)} />
-                </div>
-
-                <div className="form-row" style={{ marginTop: 8 }}>
-                  <button type="submit" className="primary-btn">Confirm Booking</button>
-                </div>
-
-                {bookingStatus && (
-                  <div className={bookingStatus.success ? 'form-success' : 'form-error'} style={{ marginTop: 8 }}>
-                    {bookingStatus.message}
-                  </div>
-                )}
-              </form>
+              </>
             )}
           </section>
         </div>
       </article>
+
+      {/* Booking modal instance */}
+      <BookingModal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        space={space}
+        user={user}
+        onBooked={(result) => {
+          // result = { success: bool, message: string, booking? }
+          setBookingStatus(result);
+        }}
+      />
     </div>
   );
 };
 
 export default SpaceDetails;
+    
