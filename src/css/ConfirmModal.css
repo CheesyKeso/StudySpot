@@ -1,4 +1,3 @@
-/* Overlay */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -6,16 +5,16 @@
   align-items: center;
   justify-content: center;
   background: rgba(0,0,0,0.45);
-  z-index: 99999;          /* raised to be above most page layers */
+  z-index: 99999;         
   padding: 1.25rem;
-  pointer-events: auto;    /* ensure overlay accepts pointer events */
+  pointer-events: auto;    
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Dialog — the single visible card */
+
 .modal-dialog {
-  position: relative;      /* create stacking context for children */
-  z-index: 100000;         /* ensure it is above the overlay/backdrop */
+  position: relative;      
+  z-index: 100000;         
   background: #fff;
   color: #111827;
   width: 100%;
@@ -26,21 +25,21 @@
   transform-origin: center;
   animation: modal-pop .18s ease-out;
   overflow: visible;
-  pointer-events: auto;    /* ensure dialog and its children are clickable */
+  pointer-events: auto;   
 }
 
-/* Make sure every interactive element inside the dialog can receive clicks */
+
 .modal-dialog button,
 .modal-dialog a,
 .modal-dialog input,
 .modal-dialog .primary-btn,
 .modal-dialog .link-button {
   pointer-events: auto;
-  position: relative; /* allow z-index on buttons if needed */
+  position: relative; 
   z-index: 100001;
 }
 
-/* Title */
+
 #confirm-title {
   margin: 0 0 0.5rem 0;
   font-size: 1.125rem;
@@ -48,24 +47,22 @@
   font-weight: 600;
 }
 
-/* Inner content — keep transparent so there's only one card */
+
 .confirm-modal-body {
   margin: 0 0 1rem 0;
   color: #374151;
   font-size: 0.975rem;
-  background: transparent;   /* override any global .modal-content */
+  background: transparent;   
   box-shadow: none;
   border-radius: 0;
   padding: 0;
 }
 .confirm-modal-body p { margin: 0.125rem 0; }
 
-/* Emphasis lines */
 .confirm-space { font-weight: 700; margin-top: 0.25rem; }
 .confirm-date { color: #111827; font-weight: 700; margin-top: 0.25rem; }
 .confirm-slot { font-weight: 400; color: #6b7280; }
 
-/* Actions */
 .modal-actions {
   display: flex;
   justify-content: flex-end;
@@ -73,7 +70,6 @@
   align-items: center;
 }
 
-/* Buttons */
 .primary-btn {
   background: #0f62fe;
   color: #fff;
@@ -92,7 +88,6 @@
   outline-offset: 2px;
 }
 
-/* Link-style button */
 .link-button {
   background: transparent;
   color: #0f62fe;
@@ -107,7 +102,6 @@
   outline-offset: 2px;
 }
 
-/* Small screens */
 @media (max-width: 420px) {
   .modal-dialog {
     padding: 1rem;
@@ -118,7 +112,6 @@
   .primary-btn, .link-button { width: 100%; text-align: center; }
 }
 
-/* Animation */
 @keyframes modal-pop {
   from { opacity: 0; transform: translateY(10px) scale(.995); }
   to   { opacity: 1; transform: translateY(0) scale(1); }

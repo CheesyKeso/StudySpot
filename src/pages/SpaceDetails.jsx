@@ -82,7 +82,7 @@ const SpaceDetails = () => {
   // small helpers for rating
   const ratingNum = space?.rating ? Number(space.rating) : null;
   const ratingCount = space?.rating_count ? Number(space.rating_count) : 0;
-  const ratingLabel = ratingNum >= 8.5 ? 'Fabulous' : ratingNum >= 7 ? 'Very good' : 'Good';
+  const ratingLabel = ratingNum === null ? '' : ratingNum <= 5 ? 'Bad' : ratingNum >= 8.5 ? 'Fabulous' : ratingNum >= 7 ? 'Very good' : 'Good';
   const formattedCount = new Intl.NumberFormat().format(ratingCount);
 
   if (loading) return <div className="page-container">Loading...</div>;
@@ -90,43 +90,55 @@ const SpaceDetails = () => {
 
   return (
     <div className="page-container space-details">
-      <button className="back-btn" onClick={() => navigate(-1)}>← Back</button>
       <article className="card detail-card" aria-labelledby={`detail-${space.id}-title`}>
-        <img className="card-image" src={space.main_image} alt={space.name} />
         <div className="card-body detail-body">
           <header className="detail-header">
+            {/* Name */}
             <h2 id={`detail-${space.id}-title`}>{space.name}</h2>
-            <div className="detail-meta">
-              <div className="detail-price">₱{space.price}</div>
-              {ratingNum !== null && (
-                <div className="rating-inline" aria-hidden>
-                  <div className="rating-badge">{ratingNum.toFixed(1)}</div>
-                  <div className="rating-meta">
-                    <div className="rating-label">{ratingLabel}</div>
-                    <div className="rating-count">{formattedCount} reviews</div>
-                  </div>
-                </div>
-              )}
-              <div className="detail-location">{space.location}</div>
-            </div>
+            {/* Location */}
+            <div className="detail-location">{space.location}</div>
+            {/* ...rating removed from header so it can sit next to price... */}
           </header>
 
+          {/* Image (moved below header to match requested order) */}
+          <img className="card-image" src={space.main_image} alt={space.name} />
+
+          {/* Details (price, description, amenities, hours, booking) */}
+          <div className="detail-meta" style={{ marginTop: 8 }}>
+            <div className="detail-price">₱{space.price}</div>
+
+            {/* moved rating here so it displays right next to the price */}
+            {ratingNum !== null && (
+              <div className="rating-inline" aria-hidden>
+                <div className="rating-badge">{ratingNum.toFixed(1)}</div>
+                <div className="rating-meta">
+                  <div className="rating-label">{ratingLabel}</div>
+                  <div className="rating-count">{formattedCount} reviews</div>
+                </div>
+              </div>
+            )}
+          </div>
+          {/* About subtitle (new) */}
+          <h3 className="detail-subtitle">About this space</h3>
           <p className="detail-description">{space.description}</p>
 
-          <section className="detail-amenities">
-            <h4>Amenities</h4>
-            <ul>
-              {space.amenities?.map((a, i) => <li key={i}>{a}</li>)}
-            </ul>
-          </section>
+          <div className="detail-sections">
+            <section className="detail-amenities">
+              <h4>Amenities</h4>
+              <ul>
+                {space.amenities?.map((a, i) => <li key={i}>{a}</li>)}
+              </ul>
+            </section>
 
-          <section className="detail-hours">
-            <h4>Hours & Time Slots</h4>
-            <p>{space.hours}</p>
-            <ul>
-              {space.time_slots?.map((t, i) => <li key={i}>{t}</li>)}
-            </ul>
-          </section>
+            <section className="detail-hours">
+              <h4>Hours & Time Slots</h4>
+              <p>{space.hours}</p>
+              <h4>Available Slot</h4>
+              <ul>
+                {space.time_slots?.map((t, i) => <li key={i}>{t}</li>)}
+              </ul>
+            </section>
+          </div>
 
           <section className="detail-booking">
             {!user ? (
@@ -163,4 +175,4 @@ const SpaceDetails = () => {
 };
 
 export default SpaceDetails;
-   
+

@@ -50,7 +50,6 @@
   margin-top: 12px;
 }
 
-/* reuse existing utility classes (.primary-btn, .link-button) defined elsewhere */
 .form-success {
   color: #065f46;
   background: #ecfdf5;

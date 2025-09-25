@@ -41,7 +41,6 @@
   .card-image{ height:220px; }
 }
 
-/* body */
 .card-body{
   padding: 10px;
   display:flex;
@@ -49,13 +48,9 @@
   gap:6px;
   flex: 1;
   justify-content: space-between;
-  padding-bottom: 44px; /* room for the floating price */
+  padding-bottom: 44px; 
 }
 
-/* keep top grouping separate for spacing */
-.card-body-top {}
-
-/* Titles & subtitles */
 .card-title{
   margin:0;
   font-size:1.05rem;
@@ -69,7 +64,6 @@
   font-size:0.9rem;
 }
 
-/* Rating inline block */
 .rating-inline {
   display: flex;
   align-items: center;
@@ -110,7 +104,6 @@
   font-size: 12px;
 }
 
-/* floating price: bottom-right pill */
 .card-price.floating {
   position: absolute;
   right: 10px;
@@ -125,14 +118,12 @@
 
 .primary-btn:hover{ filter:brightness(.98); }
 
-/* Details specifics */
 .card-body h2{ margin:0 0 6px 0; font-size:1.3rem; }
 .card-body p{ margin:0; line-height:1.45; color:#374151; font-size:0.96rem; }
 
 .card-body ul{ margin:8px 0 0 18px; padding:0; color:#374151; }
 .card-body li{ margin-bottom:6px; font-size:0.95rem; }
 
-/* Rating inline block used in cards and details */
 .rating-inline {
   display: flex;
   align-items: center;
@@ -172,15 +163,12 @@
   font-size: 12px;
 }
 
-/* layout for the search/results list — aims to fit 4 cards on wide screens */
 .results-grid {
   display: grid;
   gap: 14px;
-  /* allow cards to flex but keep them compact; 4 columns on wide viewports */
   grid-template-columns: repeat(4, 1fr);
 }
 
-/* responsive fallback: fewer columns on narrower screens */
 @media (max-width: 1100px) {
   .results-grid {
     grid-template-columns: repeat(3, 1fr);
@@ -197,23 +185,19 @@
   }
 }
 
-/* slight compacting so cards occupy less vertical space when grouped */
 .card {
-  padding: 0; /* inner content padding controlled in .card-body */
+  padding: 0; 
 }
 
-/* ensure card-body & footer remain compact in grid */
 .card-body {
   padding: 10px;
   gap: 6px;
 }
 
-/* responsive tweaks */
 @media (min-width: 900px){
   .card-image{ height:220px; }
 }
 
-/* interactive card */
 .card.clickable { cursor: pointer; }
 .card.clickable:focus { outline: none; box-shadow: 0 0 0 3px rgba(96,165,250,0.18); border-radius: var(--radius); }
 
@@ -246,7 +230,6 @@
   align-items: center;
 }
 
-/* Booking form styles */
 .booking-form {
   margin-top: 12px;
   border-top: 1px dashed #e6e9ee;
@@ -294,17 +277,14 @@
   border-radius: 8px;
 }
 
-/* make card a positioning context */
 .card {
   position: relative;
 }
 
-/* ensure content has space at the bottom so it doesn't overlap the floating price */
 .card-body {
-  padding-bottom: 44px; /* room for the floating price */
+  padding-bottom: 44px; 
 }
 
-/* floating price: bottom-right pill */
 .card-price.floating {
   position: absolute;
   right: 10px;
@@ -313,15 +293,13 @@
   color: var(--success);
   font-weight: 800;
   font-size: 0.95rem;
-  pointer-events: none; /* allow clicks to pass through to card if needed */
+  pointer-events: none;
 }
 
-/* Scoped rules for the SpaceCard component to avoid collisions with other .card uses */
 .space-card.clickable { cursor: pointer; }
 .space-card.clickable:focus { outline: none; box-shadow: 0 0 0 3px rgba(96,165,250,0.18); border-radius: var(--radius); }
 
 .space-card {
-  /* keep the same positioning context as .card but scoped */
   position: relative;
   background: #fff;
   border-radius: var(--radius);
@@ -350,10 +328,9 @@
   gap: 6px;
   flex: 1;
   justify-content: space-between;
-  padding-bottom: 44px; /* room for floating price */
+  padding-bottom: 44px; 
 }
 
-/* rating area scoped */
 .space-card .rating-inline {
   display: flex;
   align-items: center;
@@ -380,7 +357,6 @@
 .space-card .rating-label { font-weight: 700; font-size: 12px; }
 .space-card .rating-count { color: #6b7280; font-size: 12px; }
 
-/* scoped floating price */
 .space-card .card-price.floating {
   position: absolute;
   right: 10px;

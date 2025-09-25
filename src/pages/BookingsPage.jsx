@@ -82,8 +82,7 @@ const BookingsPage = () => {
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
                   <button className="primary-btn" onClick={() => navigate(`/spaces/${b.spaceId}`)}>View Space</button>
-                  {/* OPEN confirmation modal instead of immediate cancel */}
-                  <button className="link-button" onClick={() => requestCancelBooking(b.id)}>Cancel</button>
+                  <button className="primary-btn" onClick={() => requestCancelBooking(b.id)}>Cancel</button>
                 </div>
               </div>
             </article>
@@ -91,7 +90,6 @@ const BookingsPage = () => {
         </div>
       )}
 
-      {/* use extracted ConfirmModal component */}
       <ConfirmModal
         open={showConfirm}
         booking={pendingCancel}

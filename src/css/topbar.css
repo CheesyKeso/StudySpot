@@ -1,9 +1,13 @@
-/* basic topbar layout */
+
+body {
+  background: linear-gradient(to bottom, #143d95 0 15%, #ffffff 12.5% 100%);
+  background-repeat: no-repeat;
+  min-height: 45vh;
+}
+
+
 .topbar {
-  background: #fff;
-  border-bottom: 1px solid #e5e7eb;
-  box-shadow: 0 1px 0 rgba(0,0,0,0.03);
-  position: sticky;
+  background: #143d95;
   top: 0;
   z-index: 50;
 }
@@ -15,45 +19,60 @@
   padding: 10px 16px;
 }
 .brand {
-  font-weight: 700;
-  font-size: 18px;
-  color: inherit;
+  font-weight: 1000;
+  font-size: 25px;
+  color: #ffffff; 
   text-decoration: none;
 }
-/* actions container and spacing between items */
+
 .topbar-actions {
   margin-left: auto;
   display: flex;
   align-items: center;
 }
-/* spacer between adjacent action items */
+
 .topbar-actions > * + * {
   margin-left: 8px;
 }
-/* small helper classes (match your app's existing utility styles) */
+
 .signed-in {
-  color: #374151;
+  color: #ffffff;
+  padding-top: 5px;
   font-size: 14px;
 }
-/* simple button/link styles — tweak to match your existing theme */
+
 .primary-btn {
-  background: #2563eb;
-  color: #fff;
+  background: #ffffff;
+  color: #2563eb;
   border: none;
   padding: 8px 12px;
   border-radius: 6px;
   cursor: pointer;
+
+  
+  outline: none;
+  box-shadow: none;
+  -webkit-tap-highlight-color: transparent;
 }
 .link-button {
   background: transparent;
   border: none;
-  color: #2563eb;
+  color: #ffffff;
   cursor: pointer;
   padding: 6px 8px;
   text-decoration: none;
   font-size: 14px;
 }
-/* ensure link-button rendered as <a> or <button> looks consistent */
+
+.primary-btn:hover,
+.primary-btn:focus,
+.primary-btn:active {
+  background: #ffffff;
+  color: #2563eb;
+  outline: none;
+  box-shadow: none;
+}
+
 .topbar-actions .link-button {
   display: inline-flex;
   align-items: center;

@@ -4,7 +4,7 @@
     "name": "The Study Nook",
     "location": "Quezon City",
     "price": 300,
-    "main_image": "/assets/space-1.jpg",
+    "main_image": "https://upload.wikimedia.org/wikipedia/commons/e/e5/Moseley_Hall_lounge.jpg",
     "images": ["/assets/space1_a.jpg", "/assets/space1_b.jpg"],
     "description": "A quiet and cozy space perfect for deep focus sessions. Equipped with soundproof pods and an extensive library for a productive day.",
     "amenities": [
@@ -24,7 +24,7 @@
     "name": "WorkHaven Makati",
     "location": "Makati City",
     "price": 500,
-    "main_image": "/assets/space-2.jpg",
+    "main_image": "https://d2r72yk5wmppdj.cloudfront.net/m/1be49962461c7e95/High-Thesis-common-space.jpg",
     "images": ["/assets/space2_a.jpg", "/assets/space2_b.jpg"],
     "description": "A professional co-working environment in the heart of the business district. Ideal for meetings, collaborations, and networking.",
     "amenities": [
@@ -44,7 +44,7 @@
     "name": "Cebu Creative Hub",
     "location": "Cebu City",
     "price": 250,
-    "main_image": "/assets/space-3.jpg",
+    "main_image": "https://www.agati.com/wp-content/uploads/2025/05/Student_Lounge_Furniture.jpg",
     "images": [],
     "description": "A vibrant and artistic space designed to foster creativity and collaboration among Cebu's digital nomads and artists.",
     "amenities": [
@@ -64,7 +64,7 @@
     "name": "Manila Mindspace",
     "location": "Manila City",
     "price": 350,
-    "main_image": "/assets/space-4.jpg",
+    "main_image": "https://www.jmu.edu/grad/_images/l1.png",
     "images": ["/assets/space4_a.jpg", "/assets/space4_b.jpg"],
     "description": "A modern study lounge with private booths and collaborative tables, perfect for students and professionals alike.",
     "amenities": [
@@ -76,7 +76,7 @@
     ],
     "hours": "8:00 AM - 10:00 PM",
     "time_slots": ["8am-12pm", "12pm-4pm", "4pm-10pm"],
-    "rating": "8.8",
+    "rating": "7.8",
     "rating_count": 101
   },
   {
@@ -84,7 +84,7 @@
     "name": "Davao Study Loft",
     "location": "Davao City",
     "price": 200,
-    "main_image": "/assets/space-5.jpg",
+    "main_image": "https://www.pace.edu/sites/default/files/2023-10/article-teaser-lounge-and-study-spaces.jpg",
     "images": ["/assets/space5_a.jpg"],
     "description": "A budget-friendly loft with a relaxed atmosphere, ideal for group studies and brainstorming sessions.",
     "amenities": [
@@ -96,7 +96,7 @@
     ],
     "hours": "9:00 AM - 8:00 PM",
     "time_slots": ["9am-1pm", "1pm-5pm"],
-    "rating": "9.8",
+    "rating": "8.8",
     "rating_count": 134
   },
   {
@@ -104,7 +104,7 @@
     "name": "Tagaytay Think Tank",
     "location": "Tagaytay",
     "price": 400,
-    "main_image": "/assets/space-6.jpg",
+    "main_image": "https://grad.georgetown.edu/wp-content/uploads/2022/08/20220815_105211-1024x576.jpg",
     "images": ["/assets/space6_a.jpg", "/assets/space6_b.jpg"],
     "description": "A scenic study spot with a view of Taal, offering a peaceful environment for focused work.",
     "amenities": [
@@ -124,7 +124,7 @@
     "name": "Baguio Brainery",
     "location": "Baguio City",
     "price": 280,
-    "main_image": "/assets/space-7.jpg",
+    "main_image": "https://kurani.us/wp-content/uploads/2023/04/Danish-Kurani_039-Delray-Study-Lounge_Cam-01_WEB.jpg",
     "images": ["/assets/space7_a.jpg"],
     "description": "A cozy, wood-themed study space with a fireplace, perfect for chilly Baguio days.",
     "amenities": [
@@ -144,7 +144,7 @@
     "name": "Iloilo Innovation Hub",
     "location": "Iloilo City",
     "price": 320,
-    "main_image": "/assets/space-8.jpg",
+    "main_image": "https://www.cmu.edu/cohon-university-center/center-facilities/graduate-student-lounge/grad-lounge-images/CA_SA_GS%20Study%20Space_2016_3688x-min.jpg",
     "images": ["/assets/space8_a.jpg", "/assets/space8_b.jpg"],
     "description": "A tech-forward space with digital resources and a makerspace for creative projects.",
     "amenities": [
@@ -156,7 +156,7 @@
     ],
     "hours": "10:00 AM - 8:00 PM",
     "time_slots": ["10am-2pm", "2pm-6pm", "6pm-8pm"],
-    "rating": "9.3",
+    "rating": "8.3",
     "rating_count": 120
   },
   {
@@ -164,7 +164,7 @@
     "name": "Pasig Productivity Place",
     "location": "Pasig City",
     "price": 270,
-    "main_image": "/assets/space-9.jpg",
+    "main_image": "https://engineering.usu.edu/images/news/stories/2021/ece-student-lounge-side-web.jpg",
     "images": ["/assets/space9_a.jpg"],
     "description": "A minimalist study area with lots of natural light and quiet corners.",
     "amenities": [
@@ -176,7 +176,7 @@
     ],
     "hours": "8:00 AM - 8:00 PM",
     "time_slots": ["8am-12pm", "12pm-4pm", "4pm-8pm"],
-    "rating": "7.3",
+    "rating": "7.5",
     "rating_count": 58
   },
   {
@@ -184,7 +184,7 @@
     "name": "Ortigas Open Desk",
     "location": "Ortigas Center",
     "price": 350,
-    "main_image": "/assets/space-10.jpg",
+    "main_image": "https://www.smu.edu.sg/sites/default/files/styles/1920/public/images/32.%20Student%20Study%20Lounge%20%282%20of%208%29%20%28Screen%20Res%29.jpg?itok=OU5Rw3TI",
     "images": ["/assets/space10_a.jpg", "/assets/space10_b.jpg"],
     "description": "An open-plan co-working space with flexible seating and fast internet.",
     "amenities": [

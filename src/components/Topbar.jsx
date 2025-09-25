@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
-import '../css/topbar.css';
+import '../css/Topbar.css';
 
 const Topbar = () => {
   const { user, signInDemo, signOut } = useContext(AuthContext);
@@ -14,7 +14,7 @@ const Topbar = () => {
           {user ? (
             <>
               <span className="signed-in">Signed in as <strong>{user.name}</strong></span>
-              <Link to="/bookings" className="link-button">Booked</Link>
+              <Link to="/bookings" className="link-button">Bookings</Link>
               <button className="link-button" onClick={signOut}>Sign out</button>
             </>
           ) : (

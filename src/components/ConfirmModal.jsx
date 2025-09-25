@@ -43,7 +43,7 @@ const ConfirmModal = ({ open, booking, onConfirm, onCancel }) => {
           <p className="confirm-date"><strong>{booking.date}</strong><span className="confirm-slot"> ({booking.slot})</span></p>
         </div>
         <div className="modal-actions">
-          <button className="link-button" onClick={onCancel}>Keep booking</button>
+          <button className="primary-btn" onClick={onCancel}>Keep booking</button>
           <button ref={confirmRef} className="primary-btn" onClick={onConfirm}>Yes, cancel</button>
         </div>
       </div>
