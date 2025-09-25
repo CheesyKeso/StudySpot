@@ -4,22 +4,12 @@
   --accent:#2563eb;
   --card-shadow: 0 6px 18px rgba(15,23,42,0.06);
   --radius:12px;
-  --gap:12px;
   --max-width:1100px;
-  --primary:#0f172a;
-  --success:#10b981;
+  --primary:#000000;
+  --success:#000000;
 }
 
 *{box-sizing:border-box}
-
-.page-container{
-  max-width:var(--max-width);
-  margin:0 auto;
-  padding:20px;
-  font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  color:var(--primary);
-  background:var(--bg);
-}
 
 /* Card */
 .card{
@@ -30,9 +20,14 @@
   display:flex;
   flex-direction:column;
   transition:transform .15s ease, box-shadow .15s ease;
+  padding: 0;
+  position: relative;
 }
 
 .card:hover{ transform: translateY(-4px); box-shadow: 0 12px 30px rgba(15,23,42,0.08); }
+
+.card.clickable { cursor: pointer; }
+.card.clickable:focus { outline: none; box-shadow: 0 0 0 3px rgba(96,165,250,0.18); border-radius: var(--radius); }
 
 .card-image{
   width:100%;
@@ -42,25 +37,30 @@
   background:#f3f4f6;
 }
 
-/* body */
-.card-body{
-  padding:14px;
-  display:flex;
-  flex-direction:column;
-  gap:8px;
+@media (min-width: 900px){
+  .card-image{ height:220px; }
 }
 
+/* body */
+.card-body{
+  padding: 10px;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  flex: 1;
+  justify-content: space-between;
+  padding-bottom: 44px; /* room for the floating price */
+}
+
+/* keep top grouping separate for spacing */
+.card-body-top {}
+
+/* Titles & subtitles */
 .card-title{
   margin:0;
   font-size:1.05rem;
   font-weight:700;
   color:var(--primary);
-}
-
-.card-price{
-  color:var(--success);
-  font-weight:800;
-  font-size:1rem;
 }
 
 .card-sub{
@@ -69,29 +69,59 @@
   font-size:0.9rem;
 }
 
-/* Buttons */
-.link-button{
-  background:transparent;
-  border:0;
-  color:var(--accent);
-  text-decoration:underline;
-  cursor:pointer;
-  padding:6px 8px;
-  font-size:0.95rem;
+/* Rating inline block */
+.rating-inline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 8px;
+  margin-top: 8px;
 }
 
-.link-button:hover{ opacity:.9; }
-
-.primary-btn{
-  background:var(--accent);
-  color:white;
-  border:0;
-  padding:8px 12px;
-  border-radius:8px;
-  cursor:pointer;
-  font-weight:600;
+.rating-badge {
+  width: 44px;
+  height: 44px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1rem;
   box-shadow: 0 6px 12px rgba(37,99,235,0.12);
 }
+
+.rating-meta {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  font-size: 12px;
+  color: #374151;
+}
+
+.rating-label {
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.rating-count {
+  color: #6b7280;
+  font-size: 12px;
+}
+
+/* floating price: bottom-right pill */
+.card-price.floating {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  padding: 6px 10px;
+  color: var(--success);
+  font-weight: 800;
+  font-size: 0.95rem;
+  pointer-events: none;
+}
+  
 
 .primary-btn:hover{ filter:brightness(.98); }
 
@@ -101,6 +131,82 @@
 
 .card-body ul{ margin:8px 0 0 18px; padding:0; color:#374151; }
 .card-body li{ margin-bottom:6px; font-size:0.95rem; }
+
+/* Rating inline block used in cards and details */
+.rating-inline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 8px;
+}
+
+.rating-badge {
+  width: 44px;
+  height: 44px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1rem;
+  box-shadow: 0 6px 12px rgba(37,99,235,0.12);
+}
+
+.rating-meta {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  font-size: 12px;
+  color: #374151;
+}
+
+.rating-label {
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.rating-count {
+  color: #6b7280;
+  font-size: 12px;
+}
+
+/* layout for the search/results list — aims to fit 4 cards on wide screens */
+.results-grid {
+  display: grid;
+  gap: 14px;
+  /* allow cards to flex but keep them compact; 4 columns on wide viewports */
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* responsive fallback: fewer columns on narrower screens */
+@media (max-width: 1100px) {
+  .results-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 780px) {
+  .results-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 420px) {
+  .results-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* slight compacting so cards occupy less vertical space when grouped */
+.card {
+  padding: 0; /* inner content padding controlled in .card-body */
+}
+
+/* ensure card-body & footer remain compact in grid */
+.card-body {
+  padding: 10px;
+  gap: 6px;
+}
 
 /* responsive tweaks */
 @media (min-width: 900px){
@@ -186,4 +292,102 @@
   border: 1px solid #fecdd3;
   padding: 8px 10px;
   border-radius: 8px;
+}
+
+/* make card a positioning context */
+.card {
+  position: relative;
+}
+
+/* ensure content has space at the bottom so it doesn't overlap the floating price */
+.card-body {
+  padding-bottom: 44px; /* room for the floating price */
+}
+
+/* floating price: bottom-right pill */
+.card-price.floating {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  padding: 6px 10px;
+  color: var(--success);
+  font-weight: 800;
+  font-size: 0.95rem;
+  pointer-events: none; /* allow clicks to pass through to card if needed */
+}
+
+/* Scoped rules for the SpaceCard component to avoid collisions with other .card uses */
+.space-card.clickable { cursor: pointer; }
+.space-card.clickable:focus { outline: none; box-shadow: 0 0 0 3px rgba(96,165,250,0.18); border-radius: var(--radius); }
+
+.space-card {
+  /* keep the same positioning context as .card but scoped */
+  position: relative;
+  background: #fff;
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.space-card .card-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+  background: #f3f4f6;
+}
+
+@media (min-width: 900px) {
+  .space-card .card-image { height: 220px; }
+}
+
+.space-card .card-body {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  justify-content: space-between;
+  padding-bottom: 44px; /* room for floating price */
+}
+
+/* rating area scoped */
+.space-card .rating-inline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 8px;
+  margin-top: 8px;
+}
+
+.space-card .rating-badge {
+  width: 44px;
+  height: 44px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1rem;
+  box-shadow: 0 6px 12px rgba(37,99,235,0.12);
+}
+
+.space-card .rating-meta { display: flex; flex-direction: column; line-height: 1; font-size: 12px; color: #374151; }
+.space-card .rating-label { font-weight: 700; font-size: 12px; }
+.space-card .rating-count { color: #6b7280; font-size: 12px; }
+
+/* scoped floating price */
+.space-card .card-price.floating {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  padding: 6px 10px;
+  color: var(--success);
+  font-weight: 800;
+  font-size: 0.95rem;
+  pointer-events: none;
 }

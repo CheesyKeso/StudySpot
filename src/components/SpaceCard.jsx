@@ -13,10 +13,16 @@ const SpaceCard = ({ space, onViewDetails }) => {
     }
   };
 
+  // small helpers
+  const ratingNum = space?.rating ? Number(space.rating) : null;
+  const ratingCount = space?.rating_count ? Number(space.rating_count) : 0;
+  const ratingLabel = ratingNum >= 8.5 ? 'Fabulous' : ratingNum >= 7 ? 'Very good' : 'Good';
+  const formattedCount = new Intl.NumberFormat().format(ratingCount);
+
   return (
     // make the full card clickable and keyboard-accessible
     <article
-      className="card clickable"
+      className="card clickable space-card" // added space-card to scope styles
       aria-labelledby={`card-${space.id}-title`}
       role="button"
       tabIndex={0}
@@ -30,15 +36,25 @@ const SpaceCard = ({ space, onViewDetails }) => {
     >
       <img className="card-image" src={space.main_image} alt={space.name} />
       <div className="card-body">
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+        <div className="card-body-top">
           <h3 id={`card-${space.id}-title`} className="card-title">{space.name}</h3>
-          <div style={{ marginLeft: 'auto', fontWeight: 700 }} className="card-price">₱{space.price}</div>
+
+          <p className="card-sub" style={{ marginTop: 8 }}>{space.location}</p>
+
+          {ratingNum !== null && (
+            <div className="rating-inline" aria-hidden>
+              <div className="rating-badge">{ratingNum.toFixed(1)}</div>
+              <div className="rating-meta">
+                <div className="rating-label">{ratingLabel}</div>
+                <div className="rating-count">{formattedCount} reviews</div>
+              </div>
+            </div>
+          )}
         </div>
-        <p className="card-sub">{space.location}</p>
-        <p style={{ margin: 4, color: '#4b5563', fontSize: 13 }}>
-          {space.description?.slice(0, 110)}{space.description && space.description.length > 110 ? '…' : ''}
-        </p>
       </div>
+
+      {/* moved: price rendered as floating element so CSS can pin it bottom-right */}
+      <div className="card-price floating">₱{space.price}</div>
     </article>
   );
 };

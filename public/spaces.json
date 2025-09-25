@@ -15,7 +15,9 @@
       "Printing Services"
     ],
     "hours": "9:00 AM - 9:00 PM",
-    "rating": "7.8"
+    "time_slots": ["9am-1pm", "1pm-5pm"],
+    "rating": "7.8",
+    "rating_count": 53
   },
   {
     "id": 2,
@@ -33,8 +35,9 @@
       "Ergonomic Chairs"
     ],
     "hours": "Open 24/7",
-    "time_slots": ["Full Day Pass", "Night Owl Pass (9pm-6am)"],
-    "rating": "6.8"
+    "time_slots": ["8am-5pm", "9pm-6am"],
+    "rating": "6.8",
+    "rating_count": 67
   },
   {
     "id": 3,
@@ -52,8 +55,9 @@
       "Outdoor Garden"
     ],
     "hours": "10:00 AM - 7:00 PM",
-    "time_slots": ["Morning Session (10am-2pm)", "Afternoon Session (2pm-6pm)"],
-    "rating": "8.7"
+    "time_slots": ["10am-2pm", "2pm-6pm"],
+    "rating": "8.7",
+    "rating_count": 84
   },
   {
     "id": 4,
@@ -71,8 +75,9 @@
       "Printing & Scanning"
     ],
     "hours": "8:00 AM - 10:00 PM",
-    "time_slots": ["Morning (8am-12pm)", "Afternoon (12pm-4pm)", "Evening (4pm-10pm)"],
-    "rating": "8.8"
+    "time_slots": ["8am-12pm", "12pm-4pm", "4pm-10pm"],
+    "rating": "8.8",
+    "rating_count": 101
   },
   {
     "id": 5,
@@ -91,7 +96,8 @@
     ],
     "hours": "9:00 AM - 8:00 PM",
     "time_slots": ["9am-1pm", "1pm-5pm"],
-    "rating": "9.8"
+    "rating": "9.8",
+    "rating_count": 134
   },
   {
     "id": 6,
@@ -109,8 +115,9 @@
       "Charging Stations"
     ],
     "hours": "7:00 AM - 7:00 PM",
-    "time_slots": ["Morning (7am-12pm)", "Afternoon (12pm-7pm)"],
-    "rating": "9.4"
+    "time_slots": ["7am-12pm", "12pm-7pm"],
+    "rating": "9.4",
+    "rating_count": 92
   },
   {
     "id": 7,
@@ -129,7 +136,8 @@
     ],
     "hours": "8:00 AM - 9:00 PM",
     "time_slots": ["8am-1pm", "1pm-6pm", "6pm-9pm"],
-    "rating": "8.9"
+    "rating": "8.9",
+    "rating_count": 76
   },
   {
     "id": 8,
@@ -148,7 +156,8 @@
     ],
     "hours": "10:00 AM - 8:00 PM",
     "time_slots": ["10am-2pm", "2pm-6pm", "6pm-8pm"],
-    "rating": "9.3"
+    "rating": "9.3",
+    "rating_count": 120
   },
   {
     "id": 9,
@@ -167,7 +176,8 @@
     ],
     "hours": "8:00 AM - 8:00 PM",
     "time_slots": ["8am-12pm", "12pm-4pm", "4pm-8pm"],
-    "rating": "7.3"
+    "rating": "7.3",
+    "rating_count": 58
   },
   {
     "id": 10,
@@ -186,6 +196,7 @@
     ],
     "hours": "7:00 AM - 11:00 PM",
     "time_slots": ["7am-1pm", "1pm-7pm", "7pm-11pm"],
-    "rating": "8.0"
+    "rating": "8.0",
+    "rating_count": 109
   }
 ]

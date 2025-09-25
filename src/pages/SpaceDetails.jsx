@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import '../css/SpaceCard.css'; // reuse some styles, adjust as needed
-import '../css/BookingPage.css'; // added: booking form styles
+import '../css/SpaceDetails.css'; // scoped styles for the SpaceDetails page
 import { AuthContext } from '../context/AuthContext'; // updated import
 import BookingModal from '../components/BookingModal'; // new modal component
 
@@ -80,54 +79,69 @@ const SpaceDetails = () => {
     }
   };
 
+  // small helpers for rating
+  const ratingNum = space?.rating ? Number(space.rating) : null;
+  const ratingCount = space?.rating_count ? Number(space.rating_count) : 0;
+  const ratingLabel = ratingNum >= 8.5 ? 'Fabulous' : ratingNum >= 7 ? 'Very good' : 'Good';
+  const formattedCount = new Intl.NumberFormat().format(ratingCount);
+
   if (loading) return <div className="page-container">Loading...</div>;
-  if (!space) return <div className="page-container">Space not found. <button onClick={() => navigate(-1)}>Back</button></div>;
+  if (!space) return <div className="page-container">Space not found. <button className="back-btn" onClick={() => navigate(-1)}>Back</button></div>;
 
   return (
-    <div className="page-container" style={{ padding: 16 }}>
-      <button onClick={() => navigate(-1)} style={{ marginBottom: 12 }}>← Back</button>
-      <article className="card" aria-labelledby={`detail-${space.id}-title`}>
+    <div className="page-container space-details">
+      <button className="back-btn" onClick={() => navigate(-1)}>← Back</button>
+      <article className="card detail-card" aria-labelledby={`detail-${space.id}-title`}>
         <img className="card-image" src={space.main_image} alt={space.name} />
-        <div className="card-body">
-          <h2 id={`detail-${space.id}-title`}>{space.name}</h2>
-          <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-            <div style={{ fontWeight: 700, fontSize: 18 }}>₱{space.price}</div>
-            <div style={{ marginLeft: 'auto', color: '#6b7280' }}>{space.location}</div>
-          </div>
-          <p style={{ marginTop: 8 }}>{space.description}</p>
+        <div className="card-body detail-body">
+          <header className="detail-header">
+            <h2 id={`detail-${space.id}-title`}>{space.name}</h2>
+            <div className="detail-meta">
+              <div className="detail-price">₱{space.price}</div>
+              {ratingNum !== null && (
+                <div className="rating-inline" aria-hidden>
+                  <div className="rating-badge">{ratingNum.toFixed(1)}</div>
+                  <div className="rating-meta">
+                    <div className="rating-label">{ratingLabel}</div>
+                    <div className="rating-count">{formattedCount} reviews</div>
+                  </div>
+                </div>
+              )}
+              <div className="detail-location">{space.location}</div>
+            </div>
+          </header>
 
-          <h4>Amenities</h4>
-          <ul>
-            {space.amenities?.map((a, i) => <li key={i}>{a}</li>)}
-          </ul>
+          <p className="detail-description">{space.description}</p>
 
-          <h4>Hours & Time Slots</h4>
-          <p>{space.hours}</p>
-          <ul>
-            {space.time_slots?.map((t, i) => <li key={i}>{t}</li>)}
-          </ul>
+          <section className="detail-amenities">
+            <h4>Amenities</h4>
+            <ul>
+              {space.amenities?.map((a, i) => <li key={i}>{a}</li>)}
+            </ul>
+          </section>
 
-          <div style={{ marginTop: 12, display: 'flex', gap: 8 }}>
-            {/* keep simple CTA as well */}
-          </div>
+          <section className="detail-hours">
+            <h4>Hours & Time Slots</h4>
+            <p>{space.hours}</p>
+            <ul>
+              {space.time_slots?.map((t, i) => <li key={i}>{t}</li>)}
+            </ul>
+          </section>
 
-          {/* --- Booking form moved to modal --- */}
-          <section style={{ marginTop: 18 }}>
+          <section className="detail-booking">
             {!user ? (
               <div className="booking-form">
                 <p style={{ margin: 0 }}>Sign in via the top-right "Sign in" button to make a booking.</p>
               </div>
             ) : (
-              <>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                  <button className="primary-btn" onClick={() => setModalOpen(true)}>Book a slot</button>
-                  {bookingStatus && (
-                    <div className={bookingStatus.success ? 'form-success' : 'form-error'} style={{ marginLeft: 8 }}>
-                      {bookingStatus.message}
-                    </div>
-                  )}
-                </div>
-              </>
+              <div className="booking-action">
+                <button className="primary-btn" onClick={() => setModalOpen(true)}>Book a slot</button>
+                {bookingStatus && (
+                  <div className={bookingStatus.success ? 'form-success' : 'form-error'} aria-live="polite">
+                    {bookingStatus.message}
+                  </div>
+                )}
+              </div>
             )}
           </section>
         </div>
@@ -149,4 +163,4 @@ const SpaceDetails = () => {
 };
 
 export default SpaceDetails;
-    
+   
