@@ -101,7 +101,7 @@ const BookingsPage = () => {
                 <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
                   <div style={{ flex: 1 }}>
                     <div style={{ display: 'flex', alignItems: 'center' }}>
-                      <strong style={{ fontSize: 16, marginRight: 8, cursor: 'pointer' }} onClick={() => navigate(`/spaces/${b.spaceId}`)}>
+                      <strong style={{ fontSize: 16, marginRight: 8, cursor: 'pointer' }} onClick={() => navigate(`/bookings/${b.id}`)}>
                         {b.spaceName}
                       </strong>
                       <div style={{ marginLeft: 'auto', fontWeight: 700 }}>Ref: {b.id}</div>
@@ -121,7 +121,7 @@ const BookingsPage = () => {
                     </div>
                   </div>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-                    <button className="primary-btn" onClick={() => navigate(`/spaces/${b.spaceId}`)}>View Space</button>
+                    <button className="primary-btn" onClick={() => navigate(`/bookings/${b.id}`)}>View Booking</button>
                     <button className="primary-btn" onClick={() => requestCancelBooking(b.id)}>Cancel</button>
                   </div>
                 </div>

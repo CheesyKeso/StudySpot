@@ -1,8 +1,10 @@
 import React, { useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../css/BookingModal.css';
 
 const ConfirmBookingModal = ({ open, bookingPreview, onCancel, onConfirm }) => {
   const confirmRef = useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!open) return;
@@ -29,6 +31,15 @@ const ConfirmBookingModal = ({ open, bookingPreview, onCancel, onConfirm }) => {
 
   const pricePer = bookingPreview.pricePer ?? 0;
   const amount = bookingPreview.amount ?? (pricePer * (bookingPreview.attendees || 0));
+
+  // NEW: call onConfirm (await if async) then redirect to bookings
+  const handleConfirm = async () => {
+    try {
+      if (onConfirm) await onConfirm();
+    } finally {
+      navigate('/bookings');
+    }
+  };
 
   return (
     <div className="modal-overlay" role="dialog" aria-modal="true" onClick={onCancel}>
@@ -62,7 +73,7 @@ const ConfirmBookingModal = ({ open, bookingPreview, onCancel, onConfirm }) => {
 
         <div className="modal-actions">
           <button type="button" className="primary-btn" onClick={onCancel}>Back</button>
-          <button ref={confirmRef} type="button" className="primary-btn" onClick={onConfirm}>Confirm Booking</button>
+          <button ref={confirmRef} type="button" className="primary-btn" onClick={handleConfirm}>Confirm Booking</button>
         </div>
       </div>
     </div>
