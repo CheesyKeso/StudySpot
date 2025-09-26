@@ -20,26 +20,6 @@ const SpaceDetails = () => {
   // NEW: modal open state
   const [modalOpen, setModalOpen] = useState(false);
 
-  // NEW: temporarily remove the body background while on this page
-    useEffect(() => {
-      if (typeof document === 'undefined') return;
-      const prev = {
-        background: document.body.style.background,
-        backgroundRepeat: document.body.style.backgroundRepeat,
-        backgroundAttachment: document.body.style.backgroundAttachment
-      };
-      // Clear any background so the gradient from Topbar.css doesn't show
-      document.body.style.background = 'none';
-      document.body.style.backgroundRepeat = '';
-      document.body.style.backgroundAttachment = '';
-      return () => {
-        // restore previous inline styles
-        document.body.style.background = prev.background || '';
-        document.body.style.backgroundRepeat = prev.backgroundRepeat || '';
-        document.body.style.backgroundAttachment = prev.backgroundAttachment || '';
-      };
-    }, []);
-
   useEffect(() => {
     const fetchSpace = async () => {
       try {
@@ -117,17 +97,14 @@ const SpaceDetails = () => {
             <h2 id={`detail-${space.id}-title`}>{space.name}</h2>
             {/* Location */}
             <div className="detail-location">{space.location}</div>
-            {/* ...rating removed from header so it can sit next to price... */}
           </header>
 
-          {/* Image (moved below header to match requested order) */}
           <img className="card-image" src={space.main_image} alt={space.name} />
 
           {/* Details (price, description, amenities, hours, booking) */}
           <div className="detail-meta" style={{ marginTop: 8 }}>
             <div className="detail-price">₱{space.price}</div>
 
-            {/* moved rating here so it displays right next to the price */}
             {ratingNum !== null && (
               <div className="rating-inline" aria-hidden>
                 <div className="rating-badge">{ratingNum.toFixed(1)}</div>

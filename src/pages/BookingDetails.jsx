@@ -11,26 +11,6 @@ const BookingDetails = () => {
   const [space, setSpace] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // NEW: temporarily remove the body background while on this page
-    useEffect(() => {
-      if (typeof document === 'undefined') return;
-      const prev = {
-        background: document.body.style.background,
-        backgroundRepeat: document.body.style.backgroundRepeat,
-        backgroundAttachment: document.body.style.backgroundAttachment
-      };
-      // Clear any background so the gradient from Topbar.css doesn't show
-      document.body.style.background = 'none';
-      document.body.style.backgroundRepeat = '';
-      document.body.style.backgroundAttachment = '';
-      return () => {
-        // restore previous inline styles
-        document.body.style.background = prev.background || '';
-        document.body.style.backgroundRepeat = prev.backgroundRepeat || '';
-        document.body.style.backgroundAttachment = prev.backgroundAttachment || '';
-      };
-    }, []);
-
   useEffect(() => {
     const load = async () => {
       try {
@@ -63,6 +43,12 @@ const BookingDetails = () => {
       return `₱${v}`;
     }
   };
+
+  // --- new: rating helpers (same logic as SpaceDetails) ---
+  const ratingNum = space?.rating ? Number(space.rating) : null;
+  const ratingCount = space?.rating_count ? Number(space.rating_count) : 0;
+  const ratingLabel = ratingNum === null ? '' : ratingNum <= 5 ? 'Bad' : ratingNum >= 8.5 ? 'Fabulous' : ratingNum >= 7 ? 'Very good' : 'Good';
+  const formattedCount = new Intl.NumberFormat().format(ratingCount);
 
   if (loading) return <div className="page-container">Loading...</div>;
 
@@ -105,6 +91,17 @@ const BookingDetails = () => {
 
           <div className="detail-meta" style={{ marginTop: 8 }}>
             <div className="detail-price">{space ? `₱${space.price}` : fmt(pricePer)}</div>
+
+            {/* --- new: rating inline (matches SpaceDetails) --- */}
+            {ratingNum !== null && (
+              <div className="rating-inline" aria-hidden>
+                <div className="rating-badge">{ratingNum.toFixed(1)}</div>
+                <div className="rating-meta">
+                  <div className="rating-label">{ratingLabel}</div>
+                  <div className="rating-count">{formattedCount} reviews</div>
+                </div>
+              </div>
+            )}
           </div>
 
           <div className="detail-about">
