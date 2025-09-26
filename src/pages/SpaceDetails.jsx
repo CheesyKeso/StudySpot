@@ -20,6 +20,26 @@ const SpaceDetails = () => {
   // NEW: modal open state
   const [modalOpen, setModalOpen] = useState(false);
 
+  // NEW: temporarily remove the body background while on this page
+    useEffect(() => {
+      if (typeof document === 'undefined') return;
+      const prev = {
+        background: document.body.style.background,
+        backgroundRepeat: document.body.style.backgroundRepeat,
+        backgroundAttachment: document.body.style.backgroundAttachment
+      };
+      // Clear any background so the gradient from Topbar.css doesn't show
+      document.body.style.background = 'none';
+      document.body.style.backgroundRepeat = '';
+      document.body.style.backgroundAttachment = '';
+      return () => {
+        // restore previous inline styles
+        document.body.style.background = prev.background || '';
+        document.body.style.backgroundRepeat = prev.backgroundRepeat || '';
+        document.body.style.backgroundAttachment = prev.backgroundAttachment || '';
+      };
+    }, []);
+
   useEffect(() => {
     const fetchSpace = async () => {
       try {
