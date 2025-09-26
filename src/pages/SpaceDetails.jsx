@@ -119,18 +119,20 @@ const SpaceDetails = () => {
             )}
           </div>
           {/* About subtitle (new) */}
-          <h3 className="detail-subtitle">About this space</h3>
-          <p className="detail-description">{space.description}</p>
+          <div className="detail-about">
+            <h3 className="detail-subtitle">About this space</h3>
+            <p className="detail-description">{space.description}</p>
+          </div>
 
           <div className="detail-sections">
-            <section className="detail-amenities">
+            <section className="detail-amenities detail-box">
               <h4>Amenities</h4>
               <ul>
                 {space.amenities?.map((a, i) => <li key={i}>{a}</li>)}
               </ul>
             </section>
 
-            <section className="detail-hours">
+            <section className="detail-hours detail-box">
               <h4>Hours & Time Slots</h4>
               <p>{space.hours}</p>
               <h4>Available Slot</h4>

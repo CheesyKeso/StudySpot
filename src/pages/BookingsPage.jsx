@@ -22,6 +22,15 @@ const BookingsPage = () => {
     user ? b.user?.email === user.email : false
   );
 
+
+  const fmt = (v) => {
+    try {
+      return new Intl.NumberFormat('en-PH', { style: 'currency', currency: 'PHP' }).format(v);
+    } catch {
+      return `₱${v}`;
+    }
+  };
+
   // REPLACE: cancelBooking now opens confirmation modal instead of immediately removing
   const requestCancelBooking = (id) => {
     const toCancel = bookings.find((b) => b.id === id);
@@ -63,30 +72,43 @@ const BookingsPage = () => {
         <p>No bookings found for {user.name}.</p>
       ) : (
         <div style={{ display: 'grid', gap: 12 }}>
-          {userBookings.map((b) => (
-            <article key={b.id} className="card" style={{ padding: 12 }}>
-              <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-                <div style={{ flex: 1 }}>
-                  <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <strong style={{ fontSize: 16, marginRight: 8, cursor: 'pointer' }} onClick={() => navigate(`/spaces/${b.spaceId}`)}>
-                      {b.spaceName}
-                    </strong>
-                    <div style={{ marginLeft: 'auto', fontWeight: 700 }}>Ref: {b.id}</div>
+          {userBookings.map((b) => {
+            // compute pricePer and amount with fallbacks
+            const pricePer = Number(b.pricePer ?? b.price ?? 0) || 0;
+            const amount = Number(b.amount ?? (pricePer * (b.attendees || 0))) || 0;
+
+            return (
+              <article key={b.id} className="card" style={{ padding: 12 }}>
+                <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+                  <div style={{ flex: 1 }}>
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                      <strong style={{ fontSize: 16, marginRight: 8, cursor: 'pointer' }} onClick={() => navigate(`/spaces/${b.spaceId}`)}>
+                        {b.spaceName}
+                      </strong>
+                      <div style={{ marginLeft: 'auto', fontWeight: 700 }}>Ref: {b.id}</div>
+                    </div>
+                    <div style={{ color: '#6b7280', marginTop: 6 }}>
+                      Date: {b.date} • Slot: {b.slot} • Attendees: {b.attendees}
+                    </div>
+
+                    {/* NEW: display price per attendee and total amount */}
+                    <div style={{ color: '#374151', marginTop: 8, fontSize: 14 }}>
+                      <div>Price per attendee: {fmt(pricePer)}</div>
+                      <div>Total amount: {fmt(amount)}</div>
+                    </div>
+
+                    <div style={{ marginTop: 8, fontSize: 13, color: '#374151' }}>
+                      Booked at: {new Date(b.createdAt).toLocaleString()}
+                    </div>
                   </div>
-                  <div style={{ color: '#6b7280', marginTop: 6 }}>
-                    Date: {b.date} • Slot: {b.slot} • Attendees: {b.attendees}
-                  </div>
-                  <div style={{ marginTop: 8, fontSize: 13, color: '#374151' }}>
-                    Booked at: {new Date(b.createdAt).toLocaleString()}
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                    <button className="primary-btn" onClick={() => navigate(`/spaces/${b.spaceId}`)}>View Space</button>
+                    <button className="primary-btn" onClick={() => requestCancelBooking(b.id)}>Cancel</button>
                   </div>
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-                  <button className="primary-btn" onClick={() => navigate(`/spaces/${b.spaceId}`)}>View Space</button>
-                  <button className="primary-btn" onClick={() => requestCancelBooking(b.id)}>Cancel</button>
-                </div>
-              </div>
-            </article>
-          ))}
+              </article>
+            );
+          })}
         </div>
       )}
 
