@@ -24,9 +24,13 @@ const SearchBar = () => {
 
   useEffect(() => {
     setFilteredSpaces(
-      spaces.filter((space) =>
-        space.name.toLowerCase().includes(searchQuery.toLowerCase())
-      )
+      spaces.filter((space) => {
+        const q = searchQuery.toLowerCase().trim();
+        return (
+          space.name.toLowerCase().includes(q) ||
+          (space.location && space.location.toLowerCase().includes(q))
+        );
+      })
     );
   }, [searchQuery, spaces]);
 
@@ -45,7 +49,7 @@ const SearchBar = () => {
         <input
           type="text"
           name="searchInput"
-          placeholder="Search for a study spot..."
+          placeholder="Search for a study spot"
           className="search-input"
           value={searchQuery}
           onChange={handleSearch}
@@ -66,4 +70,4 @@ const SearchBar = () => {
 };
 
 export default SearchBar;
-      
+
