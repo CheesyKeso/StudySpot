@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import SpaceDetails from './pages/SpaceDetails';
 import BookingsPage from './pages/BookingsPage';
 import BookingDetails from './pages/BookingDetails'; // added import
-import './css/topbar.css'; // added: topbar styles
+import './css/Topbar.css'; // added: topbar styles
 import { AuthProvider, AuthContext } from './context/AuthContext'; // moved auth context
 import Topbar from './components/Topbar'; // new topbar component
 
